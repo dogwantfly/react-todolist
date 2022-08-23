@@ -4,9 +4,11 @@ import {
   NavLink,
   Routes,
   Route,
-  useNavigate
+  useNavigate,
+  useParams,
+  Outlet
 } from 'react-router-dom';
-import { useEffect } from 'react';
+
 const Logout = () => {
   let navigate = useNavigate();
 
@@ -26,7 +28,18 @@ const Login = () => {
 const Register = () => {
   return <p>這是註冊頁面</p>;
 };
-
+const Post = () => {
+  return (
+    <>
+      <h3>貼文頁面</h3>
+      <Outlet />
+    </>
+  )
+}
+const PostId = () => {
+  const { postId } = useParams();
+  return <p>PostId 為 {postId}</p>
+}
 function App() {
   return (
     <div className="container">
@@ -45,6 +58,12 @@ function App() {
           <NavLink to="/todo">
             <p>Todo 頁面</p>
           </NavLink>
+          <NavLink to="/post">
+            <p>Post 頁面</p>
+          </NavLink>
+          <NavLink to="/post/post123">
+            <p>Post 詳細頁面</p>
+          </NavLink>
         </div>
         {/* Routes, Route 練習區 */}
         <Routes>
@@ -59,6 +78,9 @@ function App() {
               </main>
             }
           />
+          <Route path="post" element={<Post/>}>
+            <Route path=":postId" element={<PostId/>}/>
+          </Route>
           </Routes>
         </>
       </HashRouter>
