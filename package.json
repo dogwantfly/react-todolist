@@ -1,6 +1,6 @@
 {
-  "name": "react-daily-sample",
-  "homepage": "https://dogwantfly.github.io/react-daily-task-router",
+  "name": "react-todolist",
+  "homepage": "https://dogwantfly.github.io/react-todolist",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
